@@ -19,6 +19,7 @@ settings.gradle
 *.iml
 *.ipr
 kodilla-testing/build/
+kodilla-testing/out/
 /out/
 
 ### NetBeans ###
