@@ -18,6 +18,7 @@ settings.gradle
 *.iws
 *.iml
 *.ipr
+kodilla-testing/build/
 /out/
 
 ### NetBeans ###
