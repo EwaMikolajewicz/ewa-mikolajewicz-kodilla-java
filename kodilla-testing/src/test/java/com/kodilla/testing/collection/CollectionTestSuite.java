@@ -56,5 +56,6 @@ public class CollectionTestSuite {
 
             //Then
             Assert.assertNotEquals(0,  result.size());
+            Assert.assertEquals(result, Arrays.asList(20,26,32,38,44));
         }
 }
