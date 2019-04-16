@@ -1,4 +1,4 @@
-package com.kodilla.stream.forumuser;
+package forumuser;
 
 import java.util.Map;
 import java.util.stream.Collectors;
