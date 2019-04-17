@@ -8,7 +8,7 @@ public class ForumUser {
     private final Sex sex;
     private final LocalDate birthDate;
     int postsQuantity;
-    LocalDate today = LocalDate.now();
+    private final LocalDate today = LocalDate.now();
 
     public enum Sex {
         M,
