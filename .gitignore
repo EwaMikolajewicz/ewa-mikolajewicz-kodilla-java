@@ -17,8 +17,10 @@ gradle/
 *.iws
 *.iml
 *.ipr
-kodilla-testing/build/
-kodilla-testing/out/
+kodilla-testing/
+kodilla-exception/out/
+kodilla-stream/
+kodilla-spring/out/
 /out/
 
 ### NetBeans ###
