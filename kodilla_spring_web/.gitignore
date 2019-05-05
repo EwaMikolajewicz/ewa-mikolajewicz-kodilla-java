@@ -1,6 +1,6 @@
+HELP.md
 .gradle
 /build/
-gradle/
 !gradle/wrapper/gradle-wrapper.jar
 
 ### STS ###
@@ -17,10 +17,6 @@ gradle/
 *.iws
 *.iml
 *.ipr
-kodilla-testing/
-kodilla-exception/out/
-kodilla-stream/
-kodilla-spring/out/
 /out/
 
 ### NetBeans ###
@@ -29,3 +25,6 @@ kodilla-spring/out/
 /dist/
 /nbdist/
 /.nb-gradle/
+
+### VS Code ###
+.vscode/
