@@ -7,4 +7,3 @@ include 'kodilla-stream'
 include 'kodilla-testing'
 include 'kodilla_spring_web'
 include 'kodilla-patterns'
-
