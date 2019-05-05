@@ -2,17 +2,21 @@ package com.kodilla.patterns.singleton;
 
 public final class Logger {
 
-    //pkt1 zadania 15.1
-//    private String lastLog = "";
-//
-//    public void log(String log){
-//        lastLog = log;
-//        System.out.println("Log: [" + log + "]");
-//    }
-//
-//    public String getLastLog(){
-//        return lastLog;
-//    }
+    // pkt1 zadania 15.1
+    private String theLastLog = "";
+
+    public Logger(String theLastLog){
+        this.theLastLog = theLastLog;
+    }
+
+    public void toLog(String theLog){
+        lastLog = theLog;
+        System.out.println("1. Log: [" + theLog + "]");
+    }
+
+    public String getTheLastLog(){
+        return theLastLog;
+    }
 
     //pkt 2-4 zadania 15.2
     private static Logger logger = null;
@@ -35,7 +39,7 @@ public final class Logger {
 
     public void log(String log){
         lastLog = log;
-        System.out.println("Log: [" + log + "]");
+        System.out.println("2. Log: [" + log + "]");
     }
 
     public String getLastLog(){
