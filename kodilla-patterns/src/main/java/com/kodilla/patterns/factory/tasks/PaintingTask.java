@@ -2,9 +2,9 @@ package com.kodilla.patterns.factory.tasks;
 
 public class PaintingTask implements Tasks {
 
-    final String taskName;
-    final String color;
-    final String whatToPaint;
+    private final String taskName;
+    private final String color;
+    private final String whatToPaint;
     private int counter;
 
     public PaintingTask(String taskName, String color, String whatToPaint) {
@@ -31,12 +31,8 @@ public class PaintingTask implements Tasks {
         return taskName;
     }
 
-    @Override
+     @Override
     public boolean isTaskExecuted() {
-        if (counter == 0) {
-            return false;
-        } else {
-            return true;
-        }
+        counter != 0;
     }
 }
