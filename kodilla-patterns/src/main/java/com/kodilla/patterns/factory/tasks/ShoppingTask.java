@@ -2,9 +2,9 @@ package com.kodilla.patterns.factory.tasks;
 
 public class ShoppingTask implements Tasks {
 
-    final String taskName;
-    final String whatToBuy;
-    final double quantity;
+    private final String taskName;
+    private final String whatToBuy;
+    private final double quantity;
     private int counter = 0;
 
     public ShoppingTask(String taskName, String whatToBuy, double quantity) {
@@ -31,12 +31,8 @@ public class ShoppingTask implements Tasks {
         return taskName;
     }
 
-    @Override
+     @Override
     public boolean isTaskExecuted() {
-        if (counter == 0) {
-            return false;
-        } else {
-            return true;
-        }
+        counter != 0;
     }
 }
