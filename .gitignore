@@ -1,5 +1,4 @@
 .gradle
-/build/
 gradle/
 !gradle/wrapper/gradle-wrapper.jar
 
@@ -17,9 +16,8 @@ gradle/
 *.iws
 *.iml
 *.ipr
-kodilla-testing/build/
-kodilla-testing/out/
-/out/
+**/out/
+**/build/
 
 ### NetBeans ###
 /nbproject/private/
