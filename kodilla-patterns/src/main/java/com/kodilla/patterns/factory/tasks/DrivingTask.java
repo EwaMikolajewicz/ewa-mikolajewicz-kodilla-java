@@ -33,10 +33,6 @@ public class DrivingTask implements Tasks {
 
     @Override
     public boolean isTaskExecuted() {
-        if (counter == 0) {
-            return false;
-        } else {
-            return true;
-        }
+        counter != 0;
     }
 }
