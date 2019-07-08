@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.List;
 import java.util.Optional;
 
 @RunWith(SpringRunner.class)
@@ -19,15 +20,34 @@ public class TaskDaoTestSuite {
 
     @Test
     public void testTaskDaoSave() {
-//Given
+        //Given
         Task task = new Task(DESCRIPTION, 7);
-//When
+        //When
         taskDao.save(task);
-//Then
+        //Then
         int id = task.getId();
         Optional<Task> readTask = taskDao.findById(id);
         Assert.assertTrue(readTask.isPresent());
-//CleanUp
+        //CleanUp
         taskDao.deleteById(id);
+    }
+
+    @Test
+    public void testTaskDaoFinByDuration(){
+        //Given
+        Task task = new Task(DESCRIPTION, 7);
+        taskDao.save(task);
+        int duration = task.getDuration();
+
+        //When
+        List<Task> readTasks = taskDao.findByDuration(duration);
+
+        //Then
+        Assert.assertEquals(1,readTasks.size());
+
+        //CleanUp
+        int id = readTasks.get(0).getId();
+        taskDao.deleteById(id);
+
     }
 }
