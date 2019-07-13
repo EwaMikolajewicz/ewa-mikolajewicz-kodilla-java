@@ -21,40 +21,46 @@ public class ForumStatistics {
         usersCount = statistics.usersNames().size();
         postsCount = statistics.postsCount();
         commentsCount = statistics.commentsCount();
-        if (statistics.usersNames().size() == 0) {
+        if (statistics.usersNames().size() == 0 && statistics.postsCount() == 0) {
             postsPerUserAverage = 0;
             commentsPerUserAverage = 0;
-            commentsPerPostAverage = (double)statistics.commentsCount() / statistics.postsCount();
+            commentsPerPostAverage = 0;
         } else {
-            postsPerUserAverage = (double)statistics.postsCount() / statistics.usersNames().size();
-            commentsPerUserAverage = (double)statistics.commentsCount() / statistics.usersNames().size();
-            if (statistics.postsCount() == 0) {
-                commentsPerPostAverage = 0;
-                commentsPerUserAverage = (double)statistics.commentsCount() / statistics.usersNames().size();
+            if (!(statistics.usersNames().size() == 0)) {
+                if (!(statistics.postsCount() == 0)) {
+                    postsPerUserAverage = (double) statistics.postsCount() / statistics.usersNames().size();
+                    commentsPerUserAverage = (double) statistics.commentsCount() / statistics.usersNames().size();
+                    commentsPerPostAverage = (double) statistics.commentsCount() / statistics.postsCount();
+                } else {
+                    postsPerUserAverage = (double) statistics.postsCount() / statistics.usersNames().size();
+                    commentsPerUserAverage = (double) statistics.commentsCount() / statistics.usersNames().size();
+                    commentsPerPostAverage = 0;
+                }
+
             } else {
-                postsPerUserAverage = (double)statistics.postsCount() / statistics.usersNames().size();
-                commentsPerPostAverage = (double)statistics.commentsCount() / statistics.postsCount();
-                commentsPerUserAverage = (double)statistics.commentsCount() / statistics.usersNames().size();
+                postsPerUserAverage = 0;
+                commentsPerUserAverage = 0;
+                commentsPerPostAverage = (double) statistics.commentsCount() / statistics.postsCount();
             }
         }
 
         List<Double> calcList = new ArrayList<>();
-        calcList.add((double)usersCount);
-        calcList.add((double)postsCount);
-        calcList.add((double)commentsCount);
+        calcList.add((double) usersCount);
+        calcList.add((double) postsCount);
+        calcList.add((double) commentsCount);
         calcList.add(postsPerUserAverage);
         calcList.add(commentsPerUserAverage);
         calcList.add(commentsPerPostAverage);
         return calcList;
     }
 
-        public void showStatistics(Statistics statistics){
-            System.out.println("Number of users: " + calculateAdvStatistics(statistics).get(0) +
-                    "\nNumber of post: " + calculateAdvStatistics(statistics).get(1) +
-                    "\nNumber of comments: " + calculateAdvStatistics(statistics).get(2) +
-                    "\nAverage post per user: " + calculateAdvStatistics(statistics).get(3) +
-                    "\nAverage comments per user: " + calculateAdvStatistics(statistics).get(4) +
-                    "\nAverage comments per post: " + calculateAdvStatistics(statistics).get(5));
-        }
+    public void showStatistics(Statistics statistics) {
+        System.out.println("Number of users: " + calculateAdvStatistics(statistics).get(0) +
+                "\nNumber of post: " + calculateAdvStatistics(statistics).get(1) +
+                "\nNumber of comments: " + calculateAdvStatistics(statistics).get(2) +
+                "\nAverage post per user: " + calculateAdvStatistics(statistics).get(3) +
+                "\nAverage comments per user: " + calculateAdvStatistics(statistics).get(4) +
+                "\nAverage comments per post: " + calculateAdvStatistics(statistics).get(5));
     }
+}
 

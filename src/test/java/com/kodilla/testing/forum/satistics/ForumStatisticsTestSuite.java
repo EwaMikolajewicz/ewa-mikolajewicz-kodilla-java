@@ -123,7 +123,6 @@ public class ForumStatisticsTestSuite {
 
         //When
         List<Double> mockList = forumStatistics.calculateAdvStatistics(statisticsMock);
-        System.out.println("It's not logical calc averOfCommentsPerPost with no users, but...");
         forumStatistics.showStatistics(statisticsMock);
 
         double numberOfUsers = mockList.get(0);
@@ -206,6 +205,36 @@ public class ForumStatisticsTestSuite {
         Assert.assertEquals(0.4, averOfPostsPerUser, 0);
         Assert.assertEquals(4.5, averOfCommentsPerPost, 0.001);
         Assert.assertEquals(1.8, averOfCommentsPerUser, 0);
+
+    }
+
+    @Test
+    public void testCalculateAdvStatisticsWithAllZero() {
+        //Given
+        Statistics statisticsMock = mock(Statistics.class);
+        List<String> users = new ArrayList<>();
+        int postCount = 0;
+        int commentCount = 0;
+
+        when(statisticsMock.usersNames()).thenReturn(users);
+        when(statisticsMock.postsCount()).thenReturn(postCount);
+        when(statisticsMock.commentsCount()).thenReturn(commentCount);
+
+        ForumStatistics forumStatistics = new ForumStatistics(statisticsMock);
+
+        //When
+        List<Double> mockList = forumStatistics.calculateAdvStatistics(statisticsMock);
+        forumStatistics.showStatistics(statisticsMock);
+
+
+        double averOfPostsPerUser = mockList.get(3);
+        double averOfCommentsPerUser = mockList.get(4);
+        double averOfCommentsPerPost = mockList.get(5);
+
+        //Then
+        Assert.assertEquals(0, averOfPostsPerUser, 0);
+        Assert.assertEquals(0, averOfCommentsPerPost, 0);
+        Assert.assertEquals(0, averOfCommentsPerUser, 0);
 
     }
 }
