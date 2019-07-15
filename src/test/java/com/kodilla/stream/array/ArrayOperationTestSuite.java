@@ -3,7 +3,7 @@ package com.kodilla.stream.array;
 import org.junit.*;
 
 public class ArrayOperationTestSuite {
-    private static int testCounterS = 0;
+    private static int testCounter = 0;
 
     @BeforeClass
     public static void beforeAllTests() {
@@ -17,8 +17,8 @@ public class ArrayOperationTestSuite {
 
     @Before
     public void beforeEveryTest() {
-        testCounterS++;
-        System.out.println("Preparing to execute test #" + testCounterS + "...");
+        testCounter++;
+        System.out.println("Preparing to execute test #" + testCounter + "...");
     }
 
     @Test
@@ -47,6 +47,7 @@ public class ArrayOperationTestSuite {
         Assert.assertEquals(6, numbers.length);
         Assert.assertEquals(7,numbers[2]);
     }
+
     @Test
     public void testGetAverage(){
         //Given
