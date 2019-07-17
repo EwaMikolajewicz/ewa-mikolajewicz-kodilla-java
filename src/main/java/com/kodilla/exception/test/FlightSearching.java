@@ -12,27 +12,25 @@ public class FlightSearching {
         flights.put("Heathrow Airport", false);
         flights.put("Balice Airport", true);
         flights.put("Lisbona Airport", false);
+        flights.put("Frankfurt Airport", true);
     }
 
-    public boolean findFlight(Flight flight) throws RouteNotFoundException{
+    public boolean findFlight(Flight flight) throws RouteNotFoundException {
 
         String departure = flight.getDepartureAirport();
         String arrival = flight.getArrivalAirport();
 
         if (!flights.containsKey(departure)) {
 
-            throw new RouteNotFoundException("There is no departure airport in database.");
+            throw new RouteNotFoundException("There is no departure airport in database.\nChoose between: " + flights.keySet().toString());
 
         }
 
-        if (!flights.containsKey(arrival))
-        {
+        if (!flights.containsKey(arrival)) {
 
-            throw new RouteNotFoundException("There is no arrival airport in database.");
+            throw new RouteNotFoundException("There is no arrival airport in database.\nChoose between: " + flights.keySet().toString());
 
-        }
-
-        else {
+        } else {
             boolean isArrivalAvailable = flights.get(arrival);
             boolean isDepartureAvailable = flights.get(departure);
             boolean isFlightAvailable = flights.get(departure) && flights.get(arrival);
