@@ -21,6 +21,8 @@ public class BoardTestSuite {
         String task3 = "Do your homework";
         board.getToDoList().getTasks().add(task1);
         board.getInProgressList().getTasks().add(task2);
+        board.getInProgressList().getTasks().add(task2);
+        board.getInProgressList().getTasks().add(task3);
         board.getDoneList().getTasks().add(task3);
 
         //When
@@ -30,7 +32,8 @@ public class BoardTestSuite {
 
         //Then
         Assert.assertEquals(1, toDoTaskList.getTasks().size());
-        Assert.assertEquals(1, inProgresTaskList.getTasks().size());
+        Assert.assertEquals(3, inProgresTaskList.getTasks().size());
+        Assert.assertEquals(inProgresTaskList.getTasks().get(0), inProgresTaskList.getTasks().get(1));
         Assert.assertEquals(1, doneTaskList.getTasks().size());
         Assert.assertTrue(toDoTaskList.getTasks().get(0).contains("bedroom"));
         Assert.assertEquals(task2, inProgresTaskList.getTasks().get(0));
