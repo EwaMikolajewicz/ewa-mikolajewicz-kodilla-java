@@ -22,22 +22,21 @@ public class FlightSearching {
 
         if (!flights.containsKey(departure)) {
 
-            throw new RouteNotFoundException("There is no departure airport in database.\nChoose between: " + flights.keySet().toString());
+            throw new RouteNotFoundException("There is no departure airport in database.\nChoose between: " + flights.keySet());
 
         }
 
         if (!flights.containsKey(arrival)) {
 
-            throw new RouteNotFoundException("There is no arrival airport in database.\nChoose between: " + flights.keySet().toString());
+            throw new RouteNotFoundException("There is no arrival airport in database.\nChoose between: " + flights.keySet());
 
         } else {
             boolean isArrivalAvailable = flights.get(arrival);
             boolean isDepartureAvailable = flights.get(departure);
-            boolean isFlightAvailable = flights.get(departure) && flights.get(arrival);
-            System.out.println("Is the flight available? " + isFlightAvailable +
+            System.out.println("Is the flight available? " + (isArrivalAvailable && isDepartureAvailable) +
                     "\nIs the arrival airport available? " + isArrivalAvailable +
                     "\nIs the departure airport available? " + isDepartureAvailable);
-            return isFlightAvailable;
+            return (isArrivalAvailable && isDepartureAvailable);
         }
     }
 }
