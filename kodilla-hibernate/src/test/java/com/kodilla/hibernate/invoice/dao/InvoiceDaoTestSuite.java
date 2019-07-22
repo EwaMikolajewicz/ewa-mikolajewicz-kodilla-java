@@ -47,7 +47,7 @@ public class InvoiceDaoTestSuite {
 
 
         Invoice invoice = new Invoice("FV-123456");
-        Invoice invoice1 = new Invoice("FSDHJK");
+        Invoice invoice1 = new Invoice("FV-654321");
 
         invoice.getItems().add(item1);
         invoice.getItems().add(item2);
