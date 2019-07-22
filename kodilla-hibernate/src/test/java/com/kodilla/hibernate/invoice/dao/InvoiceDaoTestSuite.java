@@ -3,6 +3,7 @@ package com.kodilla.hibernate.invoice.dao;
 import com.kodilla.hibernate.invoice.Invoice;
 import com.kodilla.hibernate.invoice.Item;
 import com.kodilla.hibernate.invoice.Product;
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,9 @@ public class InvoiceDaoTestSuite {
 
     @Autowired
     private InvoiceDao invoiceDao;
+
+    @Autowired
+    private ItemDao itemDao;
 
     @Test
     public void testInvoiceDaoSave(){
@@ -43,19 +47,33 @@ public class InvoiceDaoTestSuite {
 
 
         Invoice invoice = new Invoice("FV-123456");
+        Invoice invoice1 = new Invoice("FSDHJK");
 
         invoice.getItems().add(item1);
         invoice.getItems().add(item2);
         invoice.getItems().add(item3);
         invoice.getItems().add(item4);
+        invoice1.getItems().add(item1);
 
         item1.setInvoice(invoice);
         item2.setInvoice(invoice);
         item3.setInvoice(invoice);
         item4.setInvoice(invoice);
+        item1.setInvoice(invoice1);
 
         //When
         invoiceDao.save(invoice);
+        int invoiceId = invoice.getId();
+        invoiceDao.save(invoice1);
+        invoiceDao.deleteById(invoiceId);
 
+        //Then
+        Assert.assertEquals(1,invoiceDao.count());
+        Assert.assertEquals(1, itemDao.count());
+        Assert.assertEquals(1, invoice1.getItems().size());
+        Assert.assertEquals(4,invoice.getItems().size());
+
+        //CleanUp
+        invoiceDao.deleteAll();
     }
 }
