@@ -12,7 +12,9 @@ import java.util.stream.Collectors;
 import static java.util.stream.Collectors.toList;
 
 public class BoardTestSuite {
+
     public Board prepareTestData() {
+
         //users
         User user1 = new User("developer1", "John Smith");
         User user2 = new User("projectmanager1", "Nina White");
@@ -80,12 +82,11 @@ public class BoardTestSuite {
         return project;
     }
 
+    //Given
+    Board project = prepareTestData();
+
     @Test
     public void testAddTaskList() {
-        //Given
-        Board project = prepareTestData();
-
-        //When
 
         //Then
         Assert.assertEquals(3, project.getTaskLists().size());
@@ -93,8 +94,6 @@ public class BoardTestSuite {
 
     @Test
     public void testAddTaskListFindUsersTask() {
-        //Given
-        Board project = prepareTestData();
 
         //When
         User user = new User("developer1", "John Smith");
@@ -111,8 +110,6 @@ public class BoardTestSuite {
 
     @Test
     public void testAddTaskListFindOutdatedTasks() {
-        //Given
-        Board project = prepareTestData();
 
         // When
         List<TaskList> undoneTasks = new ArrayList<>();
@@ -132,8 +129,6 @@ public class BoardTestSuite {
 
     @Test
     public void testAddTaskListFindLongTasks() {
-        //Given
-        Board project = prepareTestData();
 
         //When
         List<TaskList> inProgressTasks = new ArrayList<>();
@@ -152,8 +147,6 @@ public class BoardTestSuite {
 
     @Test
     public void testAddTaskListAverageWorkingOnTasks() {
-        //Given
-        Board project = prepareTestData();
 
         //When
         List<TaskList> inProgressTasks = new ArrayList<>();
@@ -177,4 +170,3 @@ public class BoardTestSuite {
         Assert.assertEquals(10, average, 0.0001);
     }
 }
-
