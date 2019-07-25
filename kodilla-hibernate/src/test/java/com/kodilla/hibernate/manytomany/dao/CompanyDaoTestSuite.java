@@ -58,13 +58,9 @@ public class CompanyDaoTestSuite {
         Assert.assertNotEquals(0, greyMatterId);
 
         //CleanUp
-        try {
             companyDao.deleteById(softwareMachineId);
             companyDao.deleteById(dataMaestersId);
             companyDao.deleteById(greyMatterId);
-        } catch (Exception e) {
-            //do nothing
-        }
     }
 
     @Test
@@ -91,11 +87,8 @@ public class CompanyDaoTestSuite {
         wojciechBaranek.getCompanies().add(cccCompany);
 
         companyDao.save(aaaCompany);
-        int aaaCompanyId = aaaCompany.getId();
         companyDao.save(bbbCompany);
-        int bbbCompanyId = bbbCompany.getId();
         companyDao.save(cccCompany);
-        int cccCompanyId = cccCompany.getId();
 
         //When
         List<Company> companiesNames = companyDao.retrieveThreeFirstSignsOfCompanyName("ABC");
@@ -107,11 +100,8 @@ public class CompanyDaoTestSuite {
         Assert.assertEquals("ABCD Company", companiesNames.get(0).getName());
 
         //CleanUp
-        try {
+
             companyDao.deleteAll();
-        } catch (Exception e) {
-            //do nothing
-        }
     }
 
     @Test
@@ -138,11 +128,8 @@ public class CompanyDaoTestSuite {
         wojciechBaranek.getCompanies().add(cccCompany);
 
         companyDao.save(aaaCompany);
-        int aaaCompanyId = aaaCompany.getId();
         companyDao.save(bbbCompany);
-        int bbbCompanyId = bbbCompany.getId();
         companyDao.save(cccCompany);
-        int cccCompanyId = cccCompany.getId();
 
         //When
         List<Employee> employeesNames = employeeDao.retrieveEmployeeLastNameEquals("Nowak");
@@ -153,10 +140,7 @@ public class CompanyDaoTestSuite {
         Assert.assertEquals("Adam", employeesNames.get(0).getFirstname());
 
         //CleanUp
-        try {
             companyDao.deleteAll();
-        } catch (Exception e) {
-            //do nothing
-        }
+
     }
 }
