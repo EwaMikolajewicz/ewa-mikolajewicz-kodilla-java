@@ -11,6 +11,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.math.BigDecimal;
+import java.util.Optional;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -45,33 +46,33 @@ public class InvoiceDaoTestSuite {
         item3.setProduct(product1);
         item4.setProduct(product3);
 
-
         Invoice invoice = new Invoice("FV-123456");
-        Invoice invoice1 = new Invoice("FV-654321");
 
         invoice.getItems().add(item1);
         invoice.getItems().add(item2);
         invoice.getItems().add(item3);
         invoice.getItems().add(item4);
-        invoice1.getItems().add(item1);
 
         item1.setInvoice(invoice);
         item2.setInvoice(invoice);
         item3.setInvoice(invoice);
         item4.setInvoice(invoice);
-        item1.setInvoice(invoice1);
 
         //When
         invoiceDao.save(invoice);
+
         int invoiceId = invoice.getId();
-        invoiceDao.save(invoice1);
-        invoiceDao.deleteById(invoiceId);
+        Optional<Invoice> invoiceOptional = invoiceDao.findById(invoiceId);
 
         //Then
         Assert.assertEquals(1,invoiceDao.count());
-        Assert.assertEquals(1, itemDao.count());
-        Assert.assertEquals(1, invoice1.getItems().size());
+        Assert.assertEquals(4, itemDao.count());
         Assert.assertEquals(4,invoice.getItems().size());
+        Assert.assertTrue(invoiceOptional.isPresent());
+        Invoice invoiceFromDb = invoiceOptional.get();
+        Assert.assertEquals(4, invoiceFromDb.getItems().size());
+        Assert.assertEquals(invoice, invoiceOptional.get());
+
 
         //CleanUp
         invoiceDao.deleteAll();

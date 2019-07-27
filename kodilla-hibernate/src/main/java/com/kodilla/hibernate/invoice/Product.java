@@ -5,13 +5,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table( name = "PRODUCTS")
+@Table(name = "PRODUCTS")
 public class Product {
     private int id;
     private String name;
     List<Item> itemP = new ArrayList<>();
 
-    public Product(){
+    public Product() {
 
     }
 
@@ -51,5 +51,26 @@ public class Product {
 
     public void setItemP(List<Item> items) {
         this.itemP = itemP;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Product)) return false;
+        Product product = (Product) o;
+        return name.equals(product.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return name.hashCode();
+    }
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "id=" + id +
+                ", name='" + name +
+                '}';
     }
 }

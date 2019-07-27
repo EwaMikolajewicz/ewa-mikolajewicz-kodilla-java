@@ -11,7 +11,7 @@ public class Invoice {
     private String number;
     private List<Item> items = new ArrayList<>();
 
-    public Invoice(){
+    public Invoice() {
 
     }
 
@@ -43,7 +43,7 @@ public class Invoice {
             targetEntity = Item.class,
             mappedBy = "invoice",
             cascade = CascadeType.ALL,
-            fetch = FetchType.LAZY
+            fetch = FetchType.EAGER
     )
 
     public List<Item> getItems() {
@@ -52,5 +52,30 @@ public class Invoice {
 
     public void setItems(List<Item> items) {
         this.items = items;
+    }
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Invoice)) return false;
+        Invoice i = (Invoice) o;
+        if (items.size()!=i.items.size()) return false;
+            return number.equals(i.number) && id == i.id;
+        }
+
+    @Override
+    public int hashCode() {
+        return number.hashCode();
+    }
+
+
+    @Override
+    public String toString() {
+        return "Invoice{" +
+                "id=" + id +
+                ", number='" + number + '\'' +
+                ", items=" + items.get(id) +
+                '}';
     }
 }

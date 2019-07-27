@@ -84,4 +84,32 @@ public class Item {
     private void setValue(BigDecimal value) {
         this.value = value;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof  Item)) return false;
+        Item e = (Item) o;
+       return id == e.id
+               &&(price.equals((e.price)))
+               && (quantity == e.quantity)
+               &&(value.equals(e.value));
+    }
+
+    @Override
+    public int hashCode() {
+        int result = price.hashCode();
+        result = 31 * result + quantity;
+        result = 31 * result + value.hashCode();
+        return result;
+    }
+
+    @Override
+    public String toString() {
+        return "Item{" +
+                "price=" + price +
+                ", quantity=" + quantity +
+                ", value=" + value +
+                '}';
+    }
 }
