@@ -36,7 +36,7 @@ public class Item {
     }
 
     @ManyToOne(
-            cascade = CascadeType.PERSIST
+            cascade = CascadeType.ALL
     )
     @JoinColumn(name = "PRODUCT_ID")
     public Product getProduct() {
@@ -47,7 +47,7 @@ public class Item {
         this.product = product;
     }
     @ManyToOne(
-            cascade = CascadeType.PERSIST
+            cascade = CascadeType.ALL
     )
     @JoinColumn(name = "INVOICE_ID")
     public Invoice getInvoice() {
@@ -86,30 +86,11 @@ public class Item {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof  Item)) return false;
-        Item e = (Item) o;
-       return id == e.id
-               &&(price.equals((e.price)))
-               && (quantity == e.quantity)
-               &&(value.equals(e.value));
-    }
-
-    @Override
-    public int hashCode() {
-        int result = price.hashCode();
-        result = 31 * result + quantity;
-        result = 31 * result + value.hashCode();
-        return result;
-    }
-
-    @Override
     public String toString() {
         return "Item{" +
-                "price=" + price +
-                ", quantity=" + quantity +
-                ", value=" + value +
+                "price=" + getPrice() +
+                ", quantity=" + getQuantity() +
+                ", value=" + getValue() +
                 '}';
     }
 }

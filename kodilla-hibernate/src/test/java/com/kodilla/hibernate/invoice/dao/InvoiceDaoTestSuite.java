@@ -71,7 +71,6 @@ public class InvoiceDaoTestSuite {
         Assert.assertTrue(invoiceOptional.isPresent());
         Invoice invoiceFromDb = invoiceOptional.get();
         Assert.assertEquals(4, invoiceFromDb.getItems().size());
-        Assert.assertEquals(invoice, invoiceOptional.get());
 
 
         //CleanUp

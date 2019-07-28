@@ -54,28 +54,12 @@ public class Invoice {
         this.items = items;
     }
 
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Invoice)) return false;
-        Invoice i = (Invoice) o;
-        if (items.size()!=i.items.size()) return false;
-            return number.equals(i.number) && id == i.id && items.containsAll(i.items);
-        }
-
-    @Override
-    public int hashCode() {
-        return number.hashCode();
-    }
-
-
     @Override
     public String toString() {
         return "Invoice{" +
                 "id=" + id +
                 ", number='" + number + '\'' +
-                ", items=" + items +
+                ", items=" + getItems() +
                 '}';
     }
 }
