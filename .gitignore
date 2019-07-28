@@ -1,7 +1,5 @@
 .gradle
-/build/
 gradle/
-settings.gradle
 !gradle/wrapper/gradle-wrapper.jar
 
 ### STS ###
@@ -18,8 +16,8 @@ settings.gradle
 *.iws
 *.iml
 *.ipr
-kodilla-testing/build/
-/out/
+**/out/
+**/build/
 
 ### NetBeans ###
 /nbproject/private/
